@@ -16,6 +16,7 @@
 ### Association
 
 - has_many :items
+- has_many :buyers
 
 ## items テーブル
 
@@ -45,8 +46,10 @@
 | address        | string     | null: false                    |
 | building       | string     |                                |
 | phone_num      | string     | null: false                    |
+| user           | references | null: false, foreign_key: true |
 | item           | references | null: false, foreign_key: true |
 
 ### Association
 
+- belongs_to :user
 - belongs_to :item
