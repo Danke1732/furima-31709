@@ -9,8 +9,8 @@
 | password              | string  | null: false |
 | last_name             | string  | null: false |
 | first_name            | string  | null: false |
-| last_name (katakana)  | string  | null: false |
-| first_name (katakana) | string  | null: false |
+| last_name_katakana    | string  | null: false |
+| first_name_katakana   | string  | null: false |
 | birth_year            | integer | null: false |
 | birth_month           | integer | null: false |
 | birth_day             | integer | null: false |
