@@ -6,7 +6,7 @@
 | --------------------- | ------- | ----------- |
 | nickname              | string  | null: false |
 | email                 | string  | null: false |
-| password              | string  | null: false |
+| encrypted_password    | string  | null: false |
 | last_name             | string  | null: false |
 | first_name            | string  | null: false |
 | last_name_katakana    | string  | null: false |
@@ -27,7 +27,7 @@
 | category_id        | integer     | null: false                    |
 | status_id          | integer     | null: false                    |
 | shipping_id        | integer     | null: false                    |
-| item_prefecture_id | integer     | null: false                    |
+| prefecture_id      | integer     | null: false                    |
 | transport_days_id  | integer     | null: false                    |
 | user               | references  | null: false, foreign_key: true |
 
