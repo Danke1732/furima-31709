@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  NAME_REGEX_KANJI = /\A[ぁ-んァ-ン一-龥]/
-  NAME_REGIX_KATAKANA = /\A[ァ-ヶー－]+\z/
+  NAME_REGEX_KANJI = /\A[ぁ-んァ-ン一-龥]/.freeze
+  NAME_REGIX_KATAKANA = /\A[ァ-ヶー－]+\z/.freeze
 
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}+\z/i, message: 'Include both letters and numbers' }
   with_options presence: true do
