@@ -1,12 +1,17 @@
 FactoryBot.define do
   factory :item do
-    name { "MyString" }
-    description { "MyText" }
-    category_id { 1 }
-    status_id { 1 }
-    shipping_id { 1 }
-    prefecture_id { 1 }
-    transport_days_id { 1 }
-    user { nil }
+    name {Faker::Name.last_name}
+    description {Faker::Lorem.sentence}
+    category_id {Faker::Number.within(range: 2..11)}
+    status_id {Faker::Number.within(range: 2..7)}
+    shipping_id {Faker::Number.within(range: 2..3)}
+    prefecture_id {Faker::Number.within(range: 2..48)}
+    transportday_id {Faker::Number.within(range: 2..4)}
+    price {Faker::Number.within(range: 300..9999999)}
+    association :user
+
+    after(:build) do |item|
+      item.image.attach(io: File.open('public/images/test-image.png'), filename: 'test-image.png')
+    end
   end
 end
