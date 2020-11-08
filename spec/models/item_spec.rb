@@ -35,7 +35,7 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it 'priceが9999999円以下(300円以上)であれば出品できる' do
-        @item.price = 9999999
+        @item.price = 9_999_999
         expect(@item).to be_valid
       end
       it 'priceが半角数字で整数であれば出品できる' do
@@ -63,27 +63,27 @@ RSpec.describe Item, type: :model do
       it 'category_idが1だと出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category Select")
+        expect(@item.errors.full_messages).to include('Category Select')
       end
       it 'status_idが1だと出品できない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status Select")
+        expect(@item.errors.full_messages).to include('Status Select')
       end
       it 'shipping_idが1だと出品できない' do
         @item.shipping_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping Select")
+        expect(@item.errors.full_messages).to include('Shipping Select')
       end
       it 'prefecture_idが1だと出品できない' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture Select")
+        expect(@item.errors.full_messages).to include('Prefecture Select')
       end
       it 'transportday_idが1だと出品できない' do
         @item.transportday_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Transportday Select")
+        expect(@item.errors.full_messages).to include('Transportday Select')
       end
       it 'priceが空だと出品できない' do
         @item.price = nil
@@ -93,27 +93,27 @@ RSpec.describe Item, type: :model do
       it 'priceが299円以下だと出品できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
       it 'priceが10000000円以上だと出品できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
       it 'priceが全角で入力されていると出品できない' do
-        @item.price = "３００"
+        @item.price = '３００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width number or No decimal point")
+        expect(@item.errors.full_messages).to include('Price Half-width number or No decimal point')
       end
       it 'priceに小数点が含まれていると出品できない' do
         @item.price = 300.000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width number or No decimal point")
+        expect(@item.errors.full_messages).to include('Price Half-width number or No decimal point')
       end
       it 'itemにuserが紐づいていないと出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
