@@ -27,7 +27,7 @@
     <% if @item.buyer.nil? && user_signed_in? && @item.user_id == current_user.id %>
       <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
       <p class='or-text'>or</p>
-      <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
+      <%= link_to '削除', item_path(@item), method: :delete, class:'item-destroy' %>
     <% end %>
     <% if @item.buyer.nil? && user_signed_in? && @item.user_id !=  current_user.id %>
       <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
