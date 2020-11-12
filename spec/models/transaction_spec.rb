@@ -64,7 +64,7 @@ RSpec.describe Transaction, type: :model do
         expect(@transaction.errors.full_messages).to include('Postal code Input correctly')
       end
       it 'phone_numが全角で入力されると購入できない' do
-        @transaction.phone_num = '１２３ー４５６７'
+        @transaction.phone_num = '０８０１２３４５６７８'
         @transaction.valid?
         expect(@transaction.errors.full_messages).to include('Phone num Input only number')
       end
