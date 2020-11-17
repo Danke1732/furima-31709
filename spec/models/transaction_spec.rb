@@ -31,57 +31,57 @@ RSpec.describe Transaction, type: :model do
       it 'tokenが空だと購入できない' do
         @transaction.token = nil
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include("Token can't be blank")
+        expect(@transaction.errors.full_messages).to include("カード情報を入力してください")
       end
       it 'postal_codeが空だと購入できない' do
         @transaction.postal_code = nil
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include("Postal code can't be blank")
+        expect(@transaction.errors.full_messages).to include("郵便番号を入力してください")
       end
       it 'prefecture_idが1だと購入できない' do
         @transaction.prefecture_id = 1
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include('Prefecture Select')
+        expect(@transaction.errors.full_messages).to include('都道府県を選択してください')
       end
       it 'cityが空だと購入できない' do
         @transaction.city = nil
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include("City can't be blank")
+        expect(@transaction.errors.full_messages).to include("市区町村を入力してください")
       end
       it 'addressが空だと購入できない' do
         @transaction.address = nil
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include("Address can't be blank")
+        expect(@transaction.errors.full_messages).to include("番地を入力してください")
       end
       it 'phone_numが空だと購入できない' do
         @transaction.phone_num = nil
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include("Phone num can't be blank")
+        expect(@transaction.errors.full_messages).to include("電話番号を入力してください")
       end
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと購入できない' do
         @transaction.postal_code = '1234567'
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include('Postal code Input correctly')
+        expect(@transaction.errors.full_messages).to include('郵便番号の記述形式を正しく入力してください')
       end
       it 'phone_numが全角で入力されると購入できない' do
         @transaction.phone_num = '０８０１２３４５６７８'
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include('Phone num Input only number')
+        expect(@transaction.errors.full_messages).to include('電話番号は半角数字を入力してください')
       end
       it 'phone_numが半角数字以外が入力されると購入できない' do
         @transaction.phone_num = 'abcdefghijk'
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include('Phone num Input only number')
+        expect(@transaction.errors.full_messages).to include('電話番号は半角数字を入力してください')
       end
       it 'phone_numにハイフンが含まれると購入できない' do
         @transaction.phone_num = '090-1234-5678'
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include('Phone num Input only number')
+        expect(@transaction.errors.full_messages).to include('電話番号は半角数字を入力してください')
       end
       it 'phone_numが12桁以上だと購入できない' do
         @transaction.phone_num = '090123456789'
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include('Phone num Input only number')
+        expect(@transaction.errors.full_messages).to include('電話番号は11文字以内で入力してください')
       end
     end
   end

@@ -7,11 +7,11 @@ class Transaction
 
   with_options presence: true do
     validates :token
-    validates :postal_code, format: { with: NAME_REGEX_POSTAL, message: 'Input correctly' }
-    validates :prefecture_id, numericality: { other_than: 1, message: 'Select' }
+    validates :postal_code, format: { with: NAME_REGEX_POSTAL, message: 'の記述形式を正しく入力してください' }
+    validates :prefecture_id, numericality: { other_than: 1, message: 'を選択してください' }
     validates :city
     validates :address
-    validates :phone_num, numericality: { only_integer: true, message: 'Input only number' }, format: { with: NAME_REGEX_PHONE, message: 'Within 11 digits' }
+    validates :phone_num, numericality: { only_integer: true, message: 'は半角数字を入力してください' }, format: { with: NAME_REGEX_PHONE, message: 'は11文字以内で入力してください' }
   end
 
   def save

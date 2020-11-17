@@ -77,6 +77,8 @@ gem 'payjp'
 
 gem 'aws-sdk-s3', require: false
 
+gem 'rails-i18n'
+
 group :production do
   # gem 'rails_12factor'
   gem 'unicorn', '5.4.1'
