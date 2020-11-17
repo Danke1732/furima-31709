@@ -8,7 +8,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("../profit_calculation")
 require("../card")
-
+require("../preview")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

@@ -23,6 +23,9 @@ app/assets/stylesheets/items/new.css %>
         </p>
         <%= f.file_field :image, id:"item-image" %>
       </div>
+      <div id="image-content">
+        <%= image_tag @item.image, class: "review-image" if @item.image.attached? %>
+      </div>
     </div>
     <%# /出品画像 %>
     <%# 商品名と商品説明 %>
