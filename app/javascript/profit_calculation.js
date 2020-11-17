@@ -8,4 +8,6 @@ function calculation() {
   tax_price.innerHTML = Math.floor(calc_tax_price).toLocaleString();
   profit.innerHTML = Math.floor(price.value - calc_tax_price).toLocaleString();
 }
-setInterval(calculation, 500);
+if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
+  setInterval(calculation, 500);
+}
