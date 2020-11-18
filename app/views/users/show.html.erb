@@ -1,0 +1,84 @@
+<%= render '/shared/second-header' %>
+<div class='form-header'>
+  <h1 class='form-header-text'>
+    会員情報入力
+  </h1>
+</div>
+
+<table class="profile-info">
+  <tbody>
+    <tr>
+      <th class="detail-item">ニックネーム</th>
+      <td class="detail-value"><%= @user.nickname %></td>
+    </tr>
+    <tr>
+      <th class="detail-item">メールアドレス</th>
+      <td class="detail-value"><%= @user.email %></td>
+    </tr>
+  </tbody>
+</table>
+<%# <%= link_to "会員情報を変更する", edit_user_registration_path, class:"login-red-btn info-edit" %> 
+<%= link_to "会員情報を変更する", edit_user_registration_path, class:"login-red-btn info-edit" %>
+
+
+<%# 商品一覧 %>
+<div class='item-contents users_item'>
+  <h2 class='title'><%= "#{@user.nickname}さんの出品商品一覧" %></h2>
+  <%= link_to '新規投稿商品', new_item_path, class: "subtitle" %>
+  <ul class='item-lists'>
+    <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+    <% unless @user.items.empty? %>
+      <% @user.items.each do |item| %>
+        <li class='list'>
+          <%= link_to item_path(item) do %>
+            <div class='item-img-content'>
+              <%= image_tag item.image, class: "item-img" if item.image.attached? %>
+              <% unless item.buyer.nil? %>
+                <div class='sold-out'>
+                  <span>Sold Out!!</span>
+                </div>
+              <% end %>
+            </div>
+            <div class='item-info'>
+              <h3 class='item-name'>
+                <%= item.name %>
+              </h3>
+              <div class='item-price'>
+                <span><%= item.price %>円<br><%= item.shipping.type %></span>
+                <div class='star-btn'>
+                  <%= image_tag "star.png", class:"star-icon" %>
+                  <span class='star-count'>0</span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    <% else %>
+      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+
+      <%# 商品がない場合のダミー %>
+      <li class='list'>
+        <%= link_to '#' do %>
+          <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>
+          <div class='item-info'>
+            <h3 class='item-name'>
+              商品を出品してね！
+            </h3>
+            <div class='item-price'>
+              <span>99999999円<br>(税込み)</span>
+              <div class='star-btn'>
+                <%= image_tag "star.png", class:"star-icon" %>
+                <span class='star-count'>0</span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+    <%# /商品がない場合のダミー %>
+  </ul>
+</div>
+<%# /商品一覧 %>
+
+<%= render '/shared/second-footer' %>

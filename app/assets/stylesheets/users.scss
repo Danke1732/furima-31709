@@ -1,0 +1,47 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.update-errors {
+  text-align: left;
+}
+
+.change-user-info {
+  padding-bottom: 5vh;
+}
+
+.profile-info {
+  margin: 5vh auto 0;
+}
+
+.users_item {
+  padding: 8vh 0;
+}
+
+.info-edit {
+  width: 25%;
+  min-width: 250px;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  display: block;
+  margin: 5vh auto 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.user-edit-back {
+  width: 100%;
+  background: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  display: inline-block;
+  margin: 2vh auto;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}

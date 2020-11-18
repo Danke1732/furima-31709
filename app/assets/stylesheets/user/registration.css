@@ -153,3 +153,7 @@
   text-align: right;
   cursor: pointer;
 }
+
+.form-edit-user {
+  margin: 0 auto;
+}
