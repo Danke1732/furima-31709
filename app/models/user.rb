@@ -6,11 +6,13 @@ class User < ApplicationRecord
 
   has_many :buyers
   has_many :items
+  
+  attr_accessor :current_password
 
   NAME_REGEX_KANJI = /\A[ぁ-んァ-ン一-龥]/.freeze
   NAME_REGIX_KATAKANA = /\A[ァ-ヶー－]+\z/.freeze
 
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}+\z/i, message: 'は半角の数字と文字を含めてください' }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}+\z/i, message: 'は半角の数字と文字を含めてください' }, on: :create
   with_options presence: true do
     validates :nickname
     validates :birth_date
