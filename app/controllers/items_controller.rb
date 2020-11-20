@@ -39,6 +39,17 @@ class ItemsController < ApplicationController
     redirect_to action: :index
   end
 
+  def search
+    @keyword = params[:keyword]
+    @split_keywords = params[:keyword].split(/[[:blank:]]+/)
+    @items = []
+    if params[:keyword] != ''
+      keyword_search
+    else
+      @items = Item.all
+    end
+  end
+
   private
 
   def create_item
@@ -50,8 +61,14 @@ class ItemsController < ApplicationController
   end
 
   def user_item_check
-    unless @item.buyer.nil? && current_user.id == @item.user_id 
-      redirect_to root_path
+    redirect_to root_path unless @item.buyer.nil? && current_user.id == @item.user_id
+  end
+
+  def keyword_search
+    @split_keywords.each do |keyword|
+      Item.where('name LIKE(?)', "%#{keyword}%").each do |answer|
+        @items.push(answer)
+      end
     end
   end
 end

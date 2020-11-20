@@ -43,6 +43,7 @@
 
 .search-icon {
   width: 100%;
+  pointer-events: none;
 }
 
 .nav {

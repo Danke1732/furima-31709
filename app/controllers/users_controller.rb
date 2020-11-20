@@ -13,8 +13,6 @@ class UsersController < ApplicationController
   end
 
   def user_check
-    if current_user.id != @user.id
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id != @user.id
   end
 end

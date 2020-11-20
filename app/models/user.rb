@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :buyers
   has_many :items
-  
+
   attr_accessor :current_password
 
   NAME_REGEX_KANJI = /\A[ぁ-んァ-ン一-龥]/.freeze
