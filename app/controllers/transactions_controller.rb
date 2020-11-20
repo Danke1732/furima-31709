@@ -25,7 +25,7 @@ class TransactionsController < ApplicationController
   end
 
   def item_pay
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: transaction_params[:token],
@@ -38,8 +38,6 @@ class TransactionsController < ApplicationController
   end
 
   def buyer_item_check
-    unless @item.buyer.nil? && current_user.id != @item.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path unless @item.buyer.nil? && current_user.id != @item.user_id
   end
 end

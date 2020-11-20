@@ -31,12 +31,12 @@ RSpec.describe Transaction, type: :model do
       it 'tokenが空だと購入できない' do
         @transaction.token = nil
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include("カード情報を入力してください")
+        expect(@transaction.errors.full_messages).to include('カード情報を入力してください')
       end
       it 'postal_codeが空だと購入できない' do
         @transaction.postal_code = nil
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include("郵便番号を入力してください")
+        expect(@transaction.errors.full_messages).to include('郵便番号を入力してください')
       end
       it 'prefecture_idが1だと購入できない' do
         @transaction.prefecture_id = 1
@@ -46,17 +46,17 @@ RSpec.describe Transaction, type: :model do
       it 'cityが空だと購入できない' do
         @transaction.city = nil
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include("市区町村を入力してください")
+        expect(@transaction.errors.full_messages).to include('市区町村を入力してください')
       end
       it 'addressが空だと購入できない' do
         @transaction.address = nil
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include("番地を入力してください")
+        expect(@transaction.errors.full_messages).to include('番地を入力してください')
       end
       it 'phone_numが空だと購入できない' do
         @transaction.phone_num = nil
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include("電話番号を入力してください")
+        expect(@transaction.errors.full_messages).to include('電話番号を入力してください')
       end
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと購入できない' do
         @transaction.postal_code = '1234567'

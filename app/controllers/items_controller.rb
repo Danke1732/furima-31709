@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
     @keyword = params[:keyword]
     @split_keywords = params[:keyword].split(/[[:blank:]]+/)
     @items = []
-    if params[:keyword] != ""
+    if params[:keyword] != ''
       keyword_search
     else
       @items = Item.all
@@ -61,9 +61,7 @@ class ItemsController < ApplicationController
   end
 
   def user_item_check
-    unless @item.buyer.nil? && current_user.id == @item.user_id 
-      redirect_to root_path
-    end
+    redirect_to root_path unless @item.buyer.nil? && current_user.id == @item.user_id
   end
 
   def keyword_search
