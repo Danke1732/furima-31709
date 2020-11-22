@@ -17,6 +17,8 @@
 
 - has_many :items
 - has_many :buyers
+- has_many :favorites
+- has_many :fav_items, through: :favorites, source: :item
 
 ## items テーブル
 
@@ -35,6 +37,8 @@
 
 - belongs_to :user
 - has_one :buyer
+- has_many :favorites
+- has_many :users, through: :favorites
 
 ## buyers テーブル
 
@@ -64,3 +68,15 @@
 ### Association
 
 - belongs_to :buyer
+
+## Favorites テーブル
+
+| Column         | Type           | Options                        |
+| -------------- | -------------  | ------------------------------ |
+| user_id        | references     | null: false  foreign_key: true |
+| item_id        | references     | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
