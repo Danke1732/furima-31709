@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   has_many :buyers
   has_many :items
-  has_many :favorites
-  has_many :fav_items, throuth: :favorites, source: :item
+  has_many :favorites, dependent: :destroy
+  has_many :fav_items, through: :favorites, source: :item
 
   attr_accessor :current_password
 
