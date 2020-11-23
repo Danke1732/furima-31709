@@ -1,4 +1,4 @@
-if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
+if (document.URL.match( /items/ ) && document.URL.match( /new/ ) || document.URL.match( /items/ ) && document.URL.match( /[0-9]/ ) && document.URL.match( /edit/ ) || document.URL.match( /items/ ) && document.URL.match( /[0-9]/ ) || document.URL.match( /items/ )) {
   window.addEventListener('DOMContentLoaded', function() {
     const ImageList = document.getElementById('image-content');
   

@@ -10,4 +10,5 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: :show
+  get 'favorites/:id', to: 'favorites#like' 
 end
