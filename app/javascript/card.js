@@ -1,4 +1,4 @@
-if (document.URL.match( /transactions/ )) {
+if (document.URL.match( /items/ ) && document.URL.match( /[0-9]/ ) && document.URL.match( /transactions/ )) {
   const pay = () => {
     const form = document.getElementById("charge-form");
     form.addEventListener('submit', (e) => {
