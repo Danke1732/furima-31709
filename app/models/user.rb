@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :items
   has_many :favorites, dependent: :destroy
   has_many :fav_items, through: :favorites, source: :item
+  has_many :comments
 
   attr_accessor :current_password
 
