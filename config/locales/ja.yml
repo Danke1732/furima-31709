@@ -20,6 +20,9 @@ ja:
         price: 価格
         image: 出品画像
         user: ユーザー
+
+      comment:
+        text: コメント
   
   activemodel:
     attributes:
