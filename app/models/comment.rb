@@ -2,5 +2,5 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :item
 
-  varidates :text, presence: true
+  validates :text, presence: true, length: { maximum: 140 }
 end

@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   has_one :buyer
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   with_options presence: true do
     validates :name
