@@ -13,7 +13,6 @@ class CommentsController < ApplicationController
       error_message = @comment.errors.full_messages
       render json: { error: error_message }
     end
-    
   end
 
   def destroy
