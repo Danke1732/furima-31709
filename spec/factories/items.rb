@@ -14,4 +14,36 @@ FactoryBot.define do
       item.image.attach(io: File.open('public/images/test-image.png'), filename: 'test-image.png')
     end
   end
+
+  factory :item_test, class: Item do
+    name { "test" }
+    description { "testtest" }
+    category_id { 2 }
+    status_id { 2 }
+    shipping_id { 2 }
+    prefecture_id { 2 }
+    transportday_id { 2 }
+    price { 300 }
+    association :user
+
+    after(:build) do |item|
+      item.image.attach(io: File.open('public/images/test-image.png'), filename: 'test-image.png')
+    end
+  end
+
+  factory :item_test2, class: Item do
+    name { "test2" }
+    description { "test2" }
+    category_id { 2 }
+    status_id { 2 }
+    shipping_id { 2 }
+    prefecture_id { 2 }
+    transportday_id { 2 }
+    price { 300 }
+    association :user
+
+    after(:build) do |item|
+      item.image.attach(io: File.open('public/images/test-image.png'), filename: 'test-image.png')
+    end
+  end
 end
