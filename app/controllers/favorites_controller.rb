@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
+
   def like
     favorite = Favorite.find_by(item_id: params[:id], user_id: current_user.id)
     if favorite
