@@ -67,7 +67,7 @@
     <div class="option">
       <% if user_signed_in? %>
         <div class="favorite-btn" data-num=<%= @item.id %>>
-          <span class="favorite-count">お気に入り <%= @item.favorites.count %></span>
+          <span class="favorite-count">お気に入り <%= @item.favorites.length %></span>
         </div>
         <div class="report-btn">
           <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
@@ -81,7 +81,7 @@
     <h2 class='comment-head'>コメント一覧</h2>
     <div id="all-comments">
       <ul id="comments-indicate">
-      <% @item.comments.each do |comment| %>
+      <% @item_comments.each do |comment| %>
         <li class="comment">
           <h3 class="comment-user"><%= comment.user.nickname %></h3>
           <div>

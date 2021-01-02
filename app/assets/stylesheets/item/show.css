@@ -160,6 +160,10 @@
   color: #333;
 }
 
+.comment > div {
+  word-wrap: break-word;
+}
+
 
 .comment_user {
   margin-bottom: 8px;

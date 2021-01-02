@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :user_item_check, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.includes(:user).order('created_at DESC')
+    @items = Item.includes(:buyer, :favorites).with_attached_image.order('created_at DESC')
   end
 
   def new
@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @item_comments = @item.comments.includes(:user)
   end
 
   def edit
