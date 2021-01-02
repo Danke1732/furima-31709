@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_action :user_check
 
   def show
+    @user_items = @user.items.includes(:buyer, :favorites).with_attached_image
+    @user_favorites = @user.fav_items.includes(:buyer, :favorites).with_attached_image
   end
 
   private
