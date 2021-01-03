@@ -1,19 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe "DeviseUsers", type: :request do
+RSpec.describe 'DeviseUsers', type: :request do
   before do
     @user = FactoryBot.create(:user)
     @user_params = FactoryBot.attributes_for(:user)
     @invalid_user_params = FactoryBot.attributes_for(:user, nickname: '')
   end
 
-  describe "POST registrations#create" do
+  describe 'POST registrations#create' do
     context 'パラメータが妥当な場合' do
-      it "リクエストが成功すること" do
+      it 'リクエストが成功すること' do
         post user_registration_path, params: { user: @user_params }
         expect(response.status).to eq 302
       end
-      it "リダイレクトされること" do
+      it 'リダイレクトされること' do
         post user_registration_path, params: { user: @user_params }
         expect(response).to redirect_to root_path
       end
@@ -35,18 +35,18 @@ RSpec.describe "DeviseUsers", type: :request do
     context 'パラメータが妥当な場合' do
       it 'リクエストに成功すると正常なレスポンスが返ってくる' do
         sign_in @user
-        put user_registration_path, params: { user: { nickname: "test_update", email: "test_update@test" } }
+        put user_registration_path, params: { user: { nickname: 'test_update', email: 'test_update@test' } }
         expect(response.status).to eq 302
       end
       it 'ユーザーの情報が更新される' do
         sign_in @user
         expect do
-          put user_registration_path, params: { user: { nickname: "test_update", email: "test_update@test" } }
+          put user_registration_path, params: { user: { nickname: 'test_update', email: 'test_update@test' } }
         end.to change { User.find(@user.id).nickname }.from(@user.nickname).to('test_update')
       end
       it 'ユーザー詳細ページへリダイレクトする' do
         sign_in @user
-        put user_registration_path, params: { user: { nickname: "test_update", email: "test_update@test" } }
+        put user_registration_path, params: { user: { nickname: 'test_update', email: 'test_update@test' } }
         expect(response).to redirect_to user_path(@user)
       end
     end
@@ -93,7 +93,7 @@ RSpec.describe "DeviseUsers", type: :request do
     it 'リクエストが成功すること' do
       sign_in @user
       delete destroy_user_session_path
-      expect(response.status).to eq 302 
+      expect(response.status).to eq 302
     end
     it 'リダイレクトすること' do
       sign_in @user

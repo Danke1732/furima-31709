@@ -20,11 +20,11 @@ class Item < ApplicationRecord
   validates :price, numericality: { only_integer: true, message: 'は半角数字で入力してください' }
 
   def previous
-    Item.where("id < ?", self.id).order("id DESC").first
+    Item.where('id < ?', id).order('id DESC').first
   end
 
   def next
-    Item.where("id > ?", self.id).order("id ASC").first
+    Item.where('id > ?', id).order('id ASC').first
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions

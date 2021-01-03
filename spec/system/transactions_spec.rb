@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "購入機能", type: :system do
+RSpec.describe '購入機能', type: :system do
   before do
     @user = FactoryBot.create(:user_test)
     @user2 = FactoryBot.create(:user_test2)
@@ -34,7 +34,7 @@ RSpec.describe "購入機能", type: :system do
       expect do
         find('input[name="commit"]').click
         sleep 2
-      end.to change{ Buyer.count }.by(1)
+      end.to change { Buyer.count }.by(1)
       # トップページにリダイレクトする
       expect(current_path).to eq root_path
       # 購入した商品に「soldout」の表示があるのを確認する

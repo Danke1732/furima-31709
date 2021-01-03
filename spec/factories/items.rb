@@ -16,8 +16,8 @@ FactoryBot.define do
   end
 
   factory :item_test, class: Item do
-    name { "test" }
-    description { "testtest" }
+    name { 'test' }
+    description { 'testtest' }
     category_id { 2 }
     status_id { 2 }
     shipping_id { 2 }
@@ -32,8 +32,8 @@ FactoryBot.define do
   end
 
   factory :item_test2, class: Item do
-    name { "test2" }
-    description { "test2" }
+    name { 'test2' }
+    description { 'test2' }
     category_id { 2 }
     status_id { 2 }
     shipping_id { 2 }

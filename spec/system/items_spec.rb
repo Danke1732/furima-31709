@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "商品出品", type: :system do
+RSpec.describe '商品出品', type: :system do
   before do
     @user = FactoryBot.create(:user_test)
     @item_image = Rails.root.join('public/images/test-image.png')
@@ -28,7 +28,7 @@ RSpec.describe "商品出品", type: :system do
       # 送信するとItemモデルのカウントが1上がる
       expect do
         find('input[name="commit"]').click
-      end.to change{ Item.count }.by(1)
+      end.to change { Item.count }.by(1)
       # トップページに遷移する
       expect(current_path).to eq root_path
       # トップページには先ほど出品した商品が存在する(商品名)
@@ -86,7 +86,7 @@ RSpec.describe '出品商品編集', type: :system do
       expect(page).to have_select('item[shipping_id]', selected: '着払い(購入者負担)')
       expect(page).to have_select('item[prefecture_id]', selected: '北海道')
       expect(page).to have_select('item[transportday_id]', selected: '1~2日で発送')
-      expect(find('#item-price').value).to eq "#{@item.price}"
+      expect(find('#item-price').value).to eq @item.price.to_s
       # 商品の内容を編集する
       attach_file('item[image]', @item_image2, make_visible: true)
       fill_in 'item[name]', with: @item_update[:name]
@@ -100,7 +100,7 @@ RSpec.describe '出品商品編集', type: :system do
       # 編集してもItemモデルのカウントが変わらないことを確認する
       expect do
         find('input[name="commit"]').click
-      end.to change{ Item.count }.by(0)
+      end.to change { Item.count }.by(0)
       # トップページに遷移する
       expect(current_path).to eq item_path(@item)
       # トップページには先ほど変更した商品が存在する(商品名)
@@ -152,7 +152,7 @@ RSpec.describe '商品削除', type: :system do
     @user = FactoryBot.create(:user_test)
     @user2 = FactoryBot.create(:user_test2)
     @item = FactoryBot.create(:item_test, user_id: @user.id)
-    @item2 = FactoryBot.create(:item_test2, name: "update", price: 500, shipping_id: 3, user_id: @user2.id)
+    @item2 = FactoryBot.create(:item_test2, name: 'update', price: 500, shipping_id: 3, user_id: @user2.id)
   end
 
   context '商品を削除できるとき' do
@@ -170,7 +170,7 @@ RSpec.describe '商品削除', type: :system do
       # 商品を削除するとItemモデルのカウントが1下がるのを確認する
       expect do
         click_on '削除'
-      end.to change{ Item.count }.by(-1)
+      end.to change { Item.count }.by(-1)
       # トップページに遷移する
       expect(current_path).to eq root_path
       # トップページに先ほど削除した商品がないことを確認する(商品名)
@@ -212,7 +212,7 @@ RSpec.describe '商品削除', type: :system do
   end
 end
 
-RSpec.describe '商品詳細' , type: :system do
+RSpec.describe '商品詳細', type: :system do
   before do
     @user = FactoryBot.create(:user_test)
     @user2 = FactoryBot.create(:user_test2)

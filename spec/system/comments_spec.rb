@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "コメント投稿", type: :system do
+RSpec.describe 'コメント投稿', type: :system do
   before do
     @user = FactoryBot.create(:user_test)
     @user2 = FactoryBot.create(:user_test2)
@@ -21,7 +21,7 @@ RSpec.describe "コメント投稿", type: :system do
       # 送信するとCommentモデルのカウントが1上がる
       expect do
         find('.comment-btn').click
-      end.to change{ Comment.count }.by(1)
+      end.to change { Comment.count }.by(1)
       # コメント一覧に入力した内容のコメントが表示される
       expect(page).to have_content(@comment_params)
     end
@@ -38,7 +38,7 @@ RSpec.describe "コメント投稿", type: :system do
   end
 end
 
-RSpec.describe "コメント削除", type: :system do
+RSpec.describe 'コメント削除', type: :system do
   before do
     @user = FactoryBot.create(:user_test)
     @user2 = FactoryBot.create(:user_test2)
