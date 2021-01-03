@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "新規登録", type: :system do
+RSpec.describe '新規登録', type: :system do
   before do
     @user = FactoryBot.build(:user_test)
   end
@@ -28,7 +28,7 @@ RSpec.describe "新規登録", type: :system do
       # サインアップボタンを押すとユーザーモデルのカウントが1上がる
       expect do
         find('input[name="commit"]').click
-      end.to change{ User.count }.by(1)
+      end.to change { User.count }.by(1)
       # トップページへ遷移する
       expect(current_path).to eq root_path
       # ログアウトボタンが表示されている
@@ -61,9 +61,9 @@ RSpec.describe "新規登録", type: :system do
       # サインアップボタンを押してもユーザーモデルのカウントは上がらない
       expect do
         find('input[name="commit"]').click
-      end.to change{ User.count }.by(0)
+      end.to change { User.count }.by(0)
       # 新規登録ページに戻される
-      expect(current_path).to eq '/users' 
+      expect(current_path).to eq '/users'
     end
   end
 end

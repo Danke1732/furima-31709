@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Items", type: :request do
+RSpec.describe 'Items', type: :request do
   before do
     @user = FactoryBot.create(:user_test)
     @user2 = FactoryBot.create(:user_test2)
@@ -9,34 +9,34 @@ RSpec.describe "Items", type: :request do
     @invalid_item_params = FactoryBot.attributes_for(:item, name: '')
   end
 
-  describe "GET /index" do
+  describe 'GET /index' do
     context 'ログインしているとき' do
-      it "リクエストに成功すること" do
+      it 'リクエストに成功すること' do
         sign_in @user
         get root_path
         expect(response.status).to eq 200
       end
-      it "トップページにユーザー名が含まれていること" do
+      it 'トップページにユーザー名が含まれていること' do
         sign_in @user
         get root_path
         expect(response.body).to include @user.nickname
       end
-      it "トップページにログアウトが含まれていること" do
+      it 'トップページにログアウトが含まれていること' do
         sign_in @user
         get root_path
         expect(response.body).to include 'ログアウト'
       end
     end
     context 'ログインしていないとき' do
-      it "リクエストに成功すること" do
+      it 'リクエストに成功すること' do
         get root_path
         expect(response.status).to eq 200
       end
-      it "トップページに新規登録が含まれていること" do
+      it 'トップページに新規登録が含まれていること' do
         get root_path
         expect(response.body).to include '新規登録'
       end
-      it "トップページにログインが含まれていること" do
+      it 'トップページにログインが含まれていること' do
         get root_path
         expect(response.body).to include 'ログイン'
       end
@@ -83,7 +83,7 @@ RSpec.describe "Items", type: :request do
       it 'showアクションにリクエストするとレスポンスに商品の値段が含まれている' do
         sign_in @user
         get item_path(@item)
-        expect(response.body).to include "#{@item.price}"
+        expect(response.body).to include @item.price.to_s
       end
       it 'showアクションにリクエストするとレスポンスに商品のカテゴリーが含まれている' do
         sign_in @user
@@ -159,7 +159,7 @@ RSpec.describe "Items", type: :request do
       end
       it 'editアクションにリクエストするとすでに商品の名前が存在する' do
         get edit_item_path(@item)
-        expect(response.body).to include "#{@item.name}"
+        expect(response.body).to include @item.name.to_s
       end
       it 'editアクションにリクエストするとすでに商品の説明が存在する' do
         get edit_item_path(@item)
@@ -171,7 +171,7 @@ RSpec.describe "Items", type: :request do
       end
       it 'editアクションにリクエストするとすでに商品の画像が存在する' do
         get edit_item_path(@item)
-        expect(response.body).to include "test-image.png"
+        expect(response.body).to include 'test-image.png'
       end
       it 'editアクションにリクエストするとすでに商品の状態が存在する' do
         get edit_item_path(@item)
@@ -187,15 +187,15 @@ RSpec.describe "Items", type: :request do
       end
       it 'editアクションにリクエストするとすでに商品の発送までの日数が存在する' do
         get edit_item_path(@item)
-        expect(response.body).to include "#{@item.transportday.type}"
+        expect(response.body).to include @item.transportday.type.to_s
       end
       it 'editアクションにリクエストするとすでに商品の価格が存在する' do
         get edit_item_path(@item)
-        expect(response.body).to include "#{@item.price}"
+        expect(response.body).to include @item.price.to_s
       end
       it '出品者以外がeditアクションにリクエストするとトップページにリダイレクトする' do
         get edit_item_path(@item2)
-        expect(response).to redirect_to root_path 
+        expect(response).to redirect_to root_path
       end
     end
     context 'ログインしていないとき' do
@@ -213,7 +213,7 @@ RSpec.describe "Items", type: :request do
   describe 'POST item#create' do
     before do
       sign_in @user
-      @item_params = FactoryBot.attributes_for(:item_test, image: fixture_file_upload('public/images/test-image.png'), user_id: @user.id )
+      @item_params = FactoryBot.attributes_for(:item_test, image: fixture_file_upload('public/images/test-image.png'), user_id: @user.id)
     end
     context 'パラメータが妥当な場合' do
       it 'リクエストが成功すると正常なレスポンスが返ってくること' do

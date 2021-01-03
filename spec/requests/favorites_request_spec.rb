@@ -6,7 +6,7 @@ RSpec.describe 'Favorites', type: :request do
     @user2 = FactoryBot.create(:user_test2)
     @item = FactoryBot.create(:item_test)
   end
-  
+
   describe 'GET favorites#like' do
     context 'ログインしているとき' do
       it 'お気に入りしていないとき、お気に入り登録ができること' do
@@ -23,7 +23,7 @@ RSpec.describe 'Favorites', type: :request do
         end.to change(Favorite, :count).by(-1)
       end
     end
-    
+
     context 'ログインしていないとき' do
       it 'ログインページへリダイレクトする' do
         get "/favorites/#{@item.id}", params: { favorite: { user_id: @user.id, item_id: @item.id } }, xhr: true

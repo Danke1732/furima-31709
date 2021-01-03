@@ -20,7 +20,7 @@ RSpec.describe 'Transactions', type: :request do
       it 'indexアクションにリクエストを送るとレスポンスに商品価格が含まれている' do
         sign_in @user
         get item_transactions_path(@item)
-        expect(response.body).to include "#{@item.price}"
+        expect(response.body).to include @item.price.to_s
       end
       it 'indexアクションにリクエストを送るとレスポンスに商品の発送元の負担情報が含まれている' do
         sign_in @user

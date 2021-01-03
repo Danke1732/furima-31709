@@ -14,7 +14,7 @@ FactoryBot.define do
   factory :user_test, class: User do
     nickname      { Faker::Name.last_name }
     email         { Faker::Internet.free_email }
-    password      { "aaa111" }
+    password      { 'aaa111' }
     password_confirmation { password }
     last_name     { Gimei.last.kanji }
     first_name    { Gimei.first.kanji }
@@ -26,7 +26,7 @@ FactoryBot.define do
   factory :user_test2, class: User do
     nickname      { Faker::Name.last_name }
     email         { Faker::Internet.free_email }
-    password      { "111aaa" }
+    password      { '111aaa' }
     password_confirmation { password }
     last_name     { Gimei.last.kanji }
     first_name    { Gimei.first.kanji }
