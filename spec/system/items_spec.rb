@@ -300,3 +300,39 @@ RSpec.describe '商品検索', type: :system do
     expect(page).to have_content(@item2.shipping.type)
   end
 end
+
+RSpec.describe '商品詳細ページ切り替え', type: :system do
+  before do
+    @user = FactoryBot.create(:user_test)
+    @user2 = FactoryBot.create(:user_test2)
+    @item = FactoryBot.create(:item_test, user_id: @user.id)
+    @item2 = FactoryBot.create(:item_test2, user_id: @user2.id)
+    @item3 = FactoryBot.create(:item_test2, user_id: @user2.id)
+  end
+  it '商品詳細ページの下部の「前の商品」を選択すると一つ前の商品idの詳細ページに移動する' do
+    # トップページにいる
+    visit root_path
+    # @item2の商品詳細ページに移動する
+    visit item_path(@item2)
+    # @item2の商品詳細ページに「< 前の商品」のリンクがある
+    expect(page).to have_link '< 前の商品'
+    # 「< 前の商品」をクリックすると、@itemの商品詳細ページにいることを確認する
+    click_on '< 前の商品'
+    expect(current_path).to eq item_path(@item)
+    # item.idが最初の状態だと「< 前の商品」のリンクが表示されないことを確認する
+    expect(page).to_not have_link '< 前の商品'
+  end
+  it '商品詳細ページの下部の「後ろの商品」を選択すると一つ後の商品idの詳細ページに移動する' do
+    # トップページにいる
+    visit root_path
+    # @item2の商品詳細ページに移動する
+    visit item_path(@item2)
+    # @item2の商品詳細ページに「後ろの商品 >」のリンクがある
+    expect(page).to have_link '後ろの商品 >'
+    # 「後ろの商品 >」をクリックすると、@item3の商品詳細ページにいることを確認する
+    click_on '後ろの商品 >'
+    expect(current_path).to eq item_path(@item3)
+    # item.idが最初の状態だと「後ろの商品 >」のリンクが表示されないことを確認する
+    expect(page).to_not have_link '後ろの商品 >'
+  end
+end
