@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
     if params[:keyword] != ''
       keyword_search
     else
-      @items = Item.all
+      @items = Item.includes(:buyer, :favorites).with_attached_image.order('created_at DESC')
     end
   end
 
@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
 
   def keyword_search
     @split_keywords.each do |keyword|
-      Item.where('name LIKE(?)', "%#{keyword}%").each do |answer|
+      Item.where('name LIKE(?)', "%#{keyword}%").with_attached_image.includes(:buyer, :favorites).each do |answer|
         @items.push(answer)
       end
     end

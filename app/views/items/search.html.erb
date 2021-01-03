@@ -24,7 +24,7 @@
                 <span><%= item.price %>円<br><%= item.shipping.type %></span>
                 <div class='star-btn'>
                   <%= image_tag "star.png", class:"star-icon" %>
-                  <span class='star-count'>0</span>
+                  <span class='star-count'><%= item.favorites.length %></span>
                 </div>
               </div>
             </div>
